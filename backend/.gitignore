@@ -1,0 +1,11 @@
+/node_modules
+package-lock.json
+node_modules
+error.log
+info.log
+logs.log
+database.js
+database2.js
+dist
+src/public/uploads/*
+.env
