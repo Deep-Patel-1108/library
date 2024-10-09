@@ -7,8 +7,9 @@ import BookList from "./components/BookList";
 import BookForm from "./components/BookForm";
 import Login from "./components/Login";
 import Register from "./components/Register";
-import { Container } from "@mui/material";
 import Home from "./components/Home";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
@@ -24,6 +25,15 @@ function App() {
             <Route path="/register" element={<Register />} />
           </Routes>
         </Router>
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          closeOnClick
+          pauseOnHover
+          draggable
+          theme="light"
+        />
       </BookProvider>
     </AuthProvider>
   );

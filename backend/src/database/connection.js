@@ -3,7 +3,8 @@ import dotenv from 'dotenv';
 import { logger } from '../config/logger';
 
 dotenv.config();
-const MONGO_URI = 'mongodb://127.0.0.1:27017/library';
+const MONGO_URI = process.env.MONGO_URI;
+console.log(MONGO_URI, 'mongo');
 
 function enableTimestampsPlugin(schema) {
   schema.set('timestamps', true);

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { BookContext } from "../context/BookContext";
 import { Grid, Card, CardContent, Typography, CardMedia } from "@mui/material";
-import books from "../public/assets/books.jpg";
+import bookImage from "../public/assets/books.jpg";
 
 const BookList = () => {
   const { books } = useContext(BookContext);
@@ -15,7 +15,7 @@ const BookList = () => {
               <CardMedia
                 component="img"
                 height="200"
-                image={books}
+                image={bookImage}
                 alt={book.title}
               />
               <CardContent>

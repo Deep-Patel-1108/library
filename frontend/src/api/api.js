@@ -4,12 +4,15 @@ import {
   successMessage
 } from "../utils/functions/toast.function";
 
-const API_URL = "http://localhost:8500/api/v1";
+const API_URL = 'https://library-3v8m.onrender.com';
+
+console.log(API_URL, "api");
 
 // Fetch books
 export const fetchBooks = async () => {
   try {
     const response = await axios.get(`${API_URL}/book`);
+    console.log("first124545");
     successMessage("Books fetched successfully");
     return response.data;
   } catch (error) {

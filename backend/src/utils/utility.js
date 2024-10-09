@@ -4,11 +4,8 @@ import bcrypt from 'bcrypt';
 import { validationResult } from 'express-validator';
 import errorMessages from '../public/messages/errorMessage.js';
 
-const key = Buffer.from(
-  'eb502991ecfeb1faffeb70615b182ada9d38c058f960beb48af0daf4b81a6ea6',
-  'hex',
-);
-const iv = Buffer.from('42004a813acaffb0f4b75d45776cb2dc', 'hex');
+// const key = Buffer.from(process.env.ENCRYPTION_KEY, 'hex');
+// const iv = Buffer.from(process.env.IV_KEY, 'hex');
 const responseMessages = { ...errorMessages };
 
 export const badRequestError = (res, errors, statusCode) => {
@@ -63,26 +60,26 @@ export const sendJSONResponse = (res, statusCode, data) => {
   res.status(statusCode).json(data);
 };
 
-export const encryptText = async (text) => {
-  let cipher = crypto.createCipheriv(process.env.encrypt_Decrypt_Text, key, iv);
-  let encrypted = cipher.update(text);
-  encrypted = Buffer.concat([encrypted, cipher.final()]);
-  let encryptedData = encrypted.toString('hex');
-  return encryptedData;
-};
+// export const encryptText = async (text) => {
+//   let cipher = crypto.createCipheriv(process.env.encrypt_Decrypt_Text, key, iv);
+//   let encrypted = cipher.update(text);
+//   encrypted = Buffer.concat([encrypted, cipher.final()]);
+//   let encryptedData = encrypted.toString('hex');
+//   return encryptedData;
+// };
 
-export const decryptText = (text) => {
-  if (text === null || typeof text === 'undefined') return text;
-  let encryptedText = Buffer.from(text, 'hex');
-  let decipher = crypto.createDecipheriv(
-    process.env.encrypt_Decrypt_Text,
-    Buffer.from(key),
-    iv,
-  );
-  let decrypted = decipher.update(encryptedText);
-  decrypted = Buffer.concat([decrypted, decipher.final()]);
-  return decrypted.toString();
-};
+// export const decryptText = (text) => {
+//   if (text === null || typeof text === 'undefined') return text;
+//   let encryptedText = Buffer.from(text, 'hex');
+//   let decipher = crypto.createDecipheriv(
+//     process.env.encrypt_Decrypt_Text,
+//     Buffer.from(key),
+//     iv,
+//   );
+//   let decrypted = decipher.update(encryptedText);
+//   decrypted = Buffer.concat([decrypted, decipher.final()]);
+//   return decrypted.toString();
+// };
 
 export const hashToken = async () => {
   let resetToken = crypto.randomBytes(32).toString('hex');

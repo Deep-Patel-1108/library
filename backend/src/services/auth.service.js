@@ -84,10 +84,10 @@ export const login = async (user) => {
 export const createSuperAdmin = async () => {
   try {
     const superAdminJson = {
-      name: 'Deep Patel',
-      email: 'deep@gmail.com',
-      password: hashPassword('Deep@123'),
-      role: 1,
+      name: process.env.ADMIN_NAME,
+      email: process.env.ADMIN_EMAIL,
+      password: hashPassword(process.env.ADMIN_PASSWORD),
+      role: process.env.ADMIN_ROLE,
     };
     const superAdminExist = await User.findOne({
       role: superAdminJson.role,
