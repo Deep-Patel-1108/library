@@ -39,7 +39,6 @@ export const registerUser = async (user) => {
     successMessage("User registered successfully");
     return response;
   } catch (error) {
-    console.log(error?.response?.data?.message);
     errorMessage(error?.response?.data?.message || "Registration failed", {
       type: "error"
     });
@@ -49,12 +48,10 @@ export const registerUser = async (user) => {
 // Login user
 export const loginUser = async (user) => {
   try {
-    console.log(user, "user");
     const response = await axios.post(`${API_URL}/auth/login`, user);
     successMessage("Login successful");
     return response.data;
   } catch (error) {
-    console.log(error?.response?.data?.message, "error");
     errorMessage(error?.response?.data?.message, {
       type: "error"
     });

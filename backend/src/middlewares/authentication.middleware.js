@@ -15,9 +15,7 @@ const authentication = async (req, res, next) => {
       token = req.headers.authorization.split(' ')[1];
       const jwt = new JWTAuth();
       const decoded = await jwt.verifyToken(token);
-      console.log(decoded, 'decode');
       const { status, data } = await findUserById(decoded._doc._id);
-      console.log(status, data);
       if (!status) {
         return badRequestError(
           res,

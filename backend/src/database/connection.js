@@ -4,7 +4,6 @@ import { logger } from '../config/logger';
 
 dotenv.config();
 const MONGO_URI = process.env.MONGO_URI;
-console.log(MONGO_URI, 'mongo');
 
 function enableTimestampsPlugin(schema) {
   schema.set('timestamps', true);

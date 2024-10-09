@@ -46,7 +46,6 @@ export const findUserById = async (id) => {
 // USER VERIFICATION
 export const verifyUser = async (email, password) => {
   logger.info('verifyUser()');
-  console.log(email, 'email');
   const user = await User.findOne({ email: email });
 
   if (!user) return responseReturn(true, 'errWrongIdPassword');
@@ -75,7 +74,6 @@ export const login = async (user) => {
     access_token: token,
   };
 
-  console.log(returnJson);
   return responseReturn(false, 'User Logged in Successfully', returnJson);
 };
 

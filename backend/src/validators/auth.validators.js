@@ -42,7 +42,6 @@ export const validate = (method) => {
 
 const isEmailValid = async (value) => {
   const { status } = await isEmailExist(value);
-  console.log(status, 'sta');
   if (status) throw new Error('Email Already Exist');
   return;
 };

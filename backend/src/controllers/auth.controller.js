@@ -27,7 +27,6 @@ export const loginUser = async (req, res) => {
     } = req;
 
     const result = await service.verifyUser(email, password);
-    logger.error(result);
     if (result.error) {
       return badRequestError(res, result.message, result.statusCode);
     }

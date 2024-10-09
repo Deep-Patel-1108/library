@@ -13,7 +13,6 @@ const Navbar = () => {
     navigate("/login");
   };
 
-  console.log(user, "user");
 
   return (
     <AppBar sx={{ background: "#243642", boxShadow: "none" }}>

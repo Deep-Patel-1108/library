@@ -9,7 +9,6 @@ export const addBooks = async (req, res) => {
     const { body } = req;
     const result = await service.addBook(body);
     if (result.error) {
-      console.log(result);
       return badRequestError(res, result.message);
     }
     return successResponse(res, result);
