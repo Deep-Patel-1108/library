@@ -53,7 +53,6 @@ export const verifyUser = async (email, password) => {
 
   const validPassword = validatePassword(password, user.password);
 
-  console.log(validPassword, 'valid');
   if (!validPassword) {
     return responseReturn(true, 'errWrongIdPassword');
   }
@@ -69,7 +68,6 @@ export const login = async (user) => {
   const tokenPayload = {
     ...user,
   };
-  console.log(user);
   const token = await JWT.createToken(tokenPayload);
 
   const returnJson = {

@@ -4,15 +4,12 @@ import {
   successMessage
 } from "../utils/functions/toast.function";
 
-const API_URL = 'https://library-3v8m.onrender.com';
-
-console.log(API_URL, "api");
+const API_URL = `${process.env.REACT_APP_API_URL}/api/v1`;
 
 // Fetch books
 export const fetchBooks = async () => {
   try {
     const response = await axios.get(`${API_URL}/book`);
-    console.log("first124545");
     successMessage("Books fetched successfully");
     return response.data;
   } catch (error) {
@@ -57,7 +54,8 @@ export const loginUser = async (user) => {
     successMessage("Login successful");
     return response.data;
   } catch (error) {
-    errorMessage("Login failed", {
+    console.log(error?.response?.data?.message, "error");
+    errorMessage(error?.response?.data?.message, {
       type: "error"
     });
     console.error(error);
